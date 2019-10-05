@@ -5,11 +5,12 @@ FROM registry.endlessm-sf.com/eos-toolbox:${BRANCH}
 RUN apt-get -y update && \
     DEBIAN_FRONTEND=noninteractive apt-get -y build-dep \
         eos-installer \
-        gnome-software \
-        gnome-initial-setup \
-        gnome-settings-daemon \
         eos-payg \
         eos-payg-nonfree \
+        gnome-control-center \
+        gnome-initial-setup \
+        gnome-settings-daemon \
+        gnome-software \
     && \
     DEBIAN_FRONTEND=noninteractive apt-get -y install \
         awscli \
@@ -21,6 +22,7 @@ RUN apt-get -y update && \
         ostree \
         python-pip \
         python3-boto \
+        python3-git \
         python3-pip \
         python3-polib \
     && \
