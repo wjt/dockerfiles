@@ -7,10 +7,13 @@ RUN apt-get -y update && \
         eos-installer \
         eos-payg \
         eos-payg-nonfree \
+        flatpak \
         gnome-control-center \
         gnome-initial-setup \
         gnome-settings-daemon \
+        gnome-shell \
         gnome-software \
+        ostree \
     && \
     DEBIAN_FRONTEND=noninteractive apt-get -y install \
         awscli \
@@ -23,6 +26,7 @@ RUN apt-get -y update && \
         python-pip \
         python3-boto \
         python3-git \
+        python3-lxml \
         python3-pip \
         python3-polib \
     && \
@@ -30,3 +34,6 @@ RUN apt-get -y update && \
 
 # For  OBS
 RUN pip install progressbar
+
+# For gitlab-changelog.py
+RUN pip3 install python-gitlab
