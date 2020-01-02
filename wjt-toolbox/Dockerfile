@@ -21,6 +21,7 @@ RUN apt-get -y update && \
         flatpak \
         gir1.2-flatpak-1.0 \
         gir1.2-ostree-1.0 \
+        gnome-control-center-data \
         libxml2-utils \
         ostree \
         python-pip \
