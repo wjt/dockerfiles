@@ -17,10 +17,12 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y build-dep \
         ostree
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
+        ansible \
         awscli \
         dconf-cli \
         eos-shell-content-dev \
         flatpak \
+        flake8 \
         fonts-cantarell \
         fonts-lato \
         gir1.2-flatpak-1.0 \
@@ -35,6 +37,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
         postgresql-client \
         python3-boto \
         python3-git \
+        python3-github \
         python3-gitlab \
         python3-lxml \
         python3-matplotlib \
@@ -42,6 +45,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
         python3-polib \
         python3-progressbar \
         shellcheck \
+        transifex-client \
         x11-utils
 
 RUN apt-get -y clean
