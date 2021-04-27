@@ -36,6 +36,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
         ostree \
         postgresql-client \
         python3-boto \
+        python3-boto3 \
         python3-git \
         python3-github \
         python3-gitlab \
@@ -46,6 +47,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
         python3-progressbar \
         shellcheck \
         transifex-client \
+        whiptail
         x11-utils
 
 RUN apt-get -y clean
@@ -64,3 +66,7 @@ RUN \
     ln -s /usr/local/bin/toolbox-host-runner /usr/local/bin/podman && \
     ln -s /usr/local/bin/toolbox-host-runner /usr/local/bin/docker && \
     true
+
+RUN pip3 install --system \
+    hvac \
+    packet-python
