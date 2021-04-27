@@ -1,0 +1,10 @@
+# With this in /etc/apt/apt.conf.d/50cacheopts, then when you run apt-cache
+# depends or apt-cache rdepends or eos-dev-config/bin/apt-src-rdepends, then it
+# shows the version of the dependency when it’s versioned and whether it’s
+# Depends, Recommends, Breaks, etc.
+APT {
+  Cache {
+    ShowDependencyType "true";
+    ShowVersion "true";
+  };
+};

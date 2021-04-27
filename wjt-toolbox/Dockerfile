@@ -1,6 +1,8 @@
 ARG BRANCH=latest
 FROM registry.endlessm-sf.com/eos-toolbox:${BRANCH}
 
+COPY 50cacheopts /etc/apt/apt.conf.d
+
 # Karton is actually better at this
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y build-dep \
