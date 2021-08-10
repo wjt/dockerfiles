@@ -82,7 +82,7 @@ RUN pip3 install --system \
     torf
 
 # We are currently on Terraform 0.12, check https://github.com/endlessm/eos-administration/tree/master/terraform#readme
-RUN wget https://releases.hashicorp.com/terraform/0.12.31/terraform_0.12.31_linux_amd64.zip && \
+RUN wget --no-verbose https://releases.hashicorp.com/terraform/0.12.31/terraform_0.12.31_linux_amd64.zip && \
     mkdir -p /usr/local/bin && \
     unzip terraform_0.12.31_linux_amd64.zip terraform -d /usr/local/bin && \
     rm terraform_0.12.31_linux_amd64.zip
