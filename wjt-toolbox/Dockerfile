@@ -46,6 +46,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
         python3-ipdb \
         python3-lxml \
         python3-matplotlib \
+        python3-netaddr \
         python3-pandas \
         python3-pip \
         python3-polib \
