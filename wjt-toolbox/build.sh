@@ -1,10 +1,31 @@
 #!/bin/bash -ex
-if [ $# -ge 1 ]; then
-  BRANCH=$1
-  shift
-else
-  BRANCH=latest
-fi
+args=$(getopt -o h -l "branch:,help" -n "$0" -- "$@")
+eval set -- "$args"
+
+BRANCH=latest
+
+while true
+do
+  case "$1" in
+    --branch)
+      shift
+      BRANCH="$1"
+      shift
+      ;;
+
+    -h|--help)
+      cat <<EOF
+Usage: $0 [--branch BRANCH] [-- [podman build args]]
+
+--pull is an argument you might want to pass
+EOF
+      exit 0
+      ;;
+    --)
+      shift
+      break
+  esac
+done
 
 podman build --build-arg BRANCH="${BRANCH}" --tag wjt-toolbox:$BRANCH "$@" $(dirname "${BASH_SOURCE[0]}")
 podman stop wjt-toolbox-$BRANCH || :
