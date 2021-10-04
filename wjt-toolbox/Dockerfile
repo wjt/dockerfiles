@@ -34,6 +34,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
         jq \
         libgit2-dev \
         libxml2-utils \
+        mmdebstrap \
         ostree \
         postgresql-client \
         python3-boto \
