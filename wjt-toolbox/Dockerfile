@@ -89,8 +89,10 @@ RUN wget --no-verbose https://releases.hashicorp.com/terraform/0.12.31/terraform
     unzip terraform_0.12.31_linux_amd64.zip terraform -d /usr/local/bin && \
     rm terraform_0.12.31_linux_amd64.zip
 
-COPY update-gh /usr/local/bin
-RUN update-gh
+# Forgive me for I have sinned
+COPY install-deb-from-github-and-hope-for-the-best /usr/local/bin
+RUN install-deb-from-github-and-hope-for-the-best cli/cli
+RUN install-deb-from-github-and-hope-for-the-best profclems/glab
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
         multitime \

@@ -1,8 +1,0 @@
-#!/bin/bash
-set -ex
-tag=$(wget -O- https://api.github.com/repos/cli/cli/releases/latest | jq -r .tag_name)
-filename="gh_${tag##v}_linux_amd64.deb"
-cd /tmp
-wget --no-verbose "https://github.com/cli/cli/releases/download/$tag/$filename"
-dpkg -i "$filename"
-rm "$filename"
