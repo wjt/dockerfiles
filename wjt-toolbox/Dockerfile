@@ -8,13 +8,12 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && \
     DEBIAN_FRONTEND=noninteractive apt-get -y build-dep \
         eos-installer \
+        eos-updater \
         gnome-control-center \
         gnome-initial-setup \
         gnome-settings-daemon \
         gnome-shell \
         gnome-software \
-        gvfs \
-        minilzip \
         ostree \
     && \
     DEBIAN_FRONTEND=noninteractive apt-get -y install \
@@ -33,8 +32,10 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
         jenkins-job-builder \
         jq \
         libgit2-dev \
+        librsvg2-common \
         libxml2-utils \
         mmdebstrap \
+        multitime \
         ostree \
         postgresql-client \
         python3-boto \
@@ -54,9 +55,14 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
         python3-progressbar \
         python3-venv \
         shellcheck \
+        sqlite3 \
         transifex-client \
         whiptail \
         x11-utils \
+    && \
+    DEBIAN_FRONTEND=noninteractive apt-get -y install \
+        --no-install-recommends \
+        docker-compose \
     && \
     apt-get -y clean
 
@@ -93,9 +99,3 @@ RUN wget --no-verbose https://releases.hashicorp.com/terraform/0.12.31/terraform
 COPY install-deb-from-github-and-hope-for-the-best /usr/local/bin
 RUN install-deb-from-github-and-hope-for-the-best cli/cli
 RUN install-deb-from-github-and-hope-for-the-best profclems/glab
-
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
-        multitime \
-    && \
-    apt-get -y clean
-

@@ -8,6 +8,7 @@ Not usable unless you are on the Endless VPN.
 ./build.sh
 # 3.7
 ./build.sh 3.7
-# podman args
-./build.sh latest --pull-always
+# podman args after --
+./build.sh -- --pull-always
+./build.sh latest -- --pull-always
 ```
