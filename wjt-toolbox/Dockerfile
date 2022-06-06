@@ -24,6 +24,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
         flake8 \
         fonts-cantarell \
         fonts-lato \
+        git-revise \
         gir1.2-flatpak-1.0 \
         gir1.2-ostree-1.0 \
         gnome-control-center-data \
@@ -33,6 +34,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
         jq \
         libgit2-dev \
         librsvg2-common \
+        libsecret-tools \
         libxml2-utils \
         mmdebstrap \
         multitime \
