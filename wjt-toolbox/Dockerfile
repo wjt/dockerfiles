@@ -99,3 +99,12 @@ RUN wget --no-verbose https://releases.hashicorp.com/terraform/0.12.31/terraform
 COPY install-deb-from-github-and-hope-for-the-best /usr/local/bin
 RUN install-deb-from-github-and-hope-for-the-best cli/cli
 RUN install-deb-from-github-and-hope-for-the-best profclems/glab
+
+RUN \
+    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" >/etc/apt/sources.list.d/google-cloud-sdk.list \
+    && \
+    curl -o /usr/share/keyrings/cloud.google.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg \
+    && \
+    DEBIAN_FRONTEND=noninteractive apt-get update -y \
+    && \
+    DEBIAN_FRONTEND=noninteractive apt-get install google-cloud-sdk -y
