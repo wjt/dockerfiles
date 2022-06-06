@@ -3,7 +3,16 @@ FROM registry.endlessm-sf.com/eos-toolbox:${BRANCH}
 
 COPY 50cacheopts /etc/apt/apt.conf.d
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
+RUN \
+    curl -fsSL -o /usr/share/keyrings/cloud.google.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg \
+    && \
+    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" >/etc/apt/sources.list.d/google-cloud-sdk.list \
+    && \
+    curl -fsSL -o /usr/share/keyrings/githubcli-archive-keyring.gpg https://cli.github.com/packages/githubcli-archive-keyring.gpg && \
+    && \
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" > /etc/apt/sources.list.d/github-cli.list \
+    && \
+    DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && \
     DEBIAN_FRONTEND=noninteractive apt-get -y build-dep \
         eos-installer \
@@ -35,6 +44,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
         librsvg2-common \
         libsecret-tools \
         libxml2-utils \
+        google-cloud-sdk \
+        gh \
         mmdebstrap \
         multitime \
         ostree \
@@ -75,6 +86,7 @@ RUN pip3 install BuildStream \
     pip3 install -e /opt/bst-external
 
 # https://github.com/containers/toolbox/issues/145
+# TODO: just alias both to 'podman --remote'?
 COPY toolbox-host-runner /usr/local/bin
 RUN chmod +x /usr/local/bin/toolbox-host-runner
 RUN \
@@ -99,20 +111,3 @@ RUN wget --no-verbose https://releases.hashicorp.com/terraform/0.12.31/terraform
 # Forgive me for I have sinned
 COPY install-deb-from-github-and-hope-for-the-best /usr/local/bin
 RUN install-deb-from-github-and-hope-for-the-best profclems/glab
-
-RUN \
-    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" >/etc/apt/sources.list.d/google-cloud-sdk.list \
-    && \
-    curl -o /usr/share/keyrings/cloud.google.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg \
-    && \
-    DEBIAN_FRONTEND=noninteractive apt-get update -y \
-    && \
-    DEBIAN_FRONTEND=noninteractive apt-get install google-cloud-sdk -y
-
-RUN \
-    curl -fsSL -o /usr/share/keyrings/githubcli-archive-keyring.gpg https://cli.github.com/packages/githubcli-archive-keyring.gpg && \
-    && \
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" > /etc/apt/sources.list.d/github-cli.list && \
-    DEBIAN_FRONTEND=noninteractive apt-get update -y \
-    && \
-    DEBIAN_FRONTEND=noninteractive apt-get install gh -y
