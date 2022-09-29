@@ -3,10 +3,12 @@ FROM localhost/eos-admin:${BRANCH}
 
 COPY 50cacheopts /etc/apt/apt.conf.d
 
-# TODO: ADD <url> <file>
-ADD https://cli.github.com/packages/githubcli-archive-keyring.gpg /usr/share/keyrings/githubcli-archive-keyring.gpg
+# You might hope to use ADD <url> <file> to download the keyring into the right place.
+# However, when ADD's first argument is a URL, it sets mode 0600 on the target file!
 RUN \
-    echo "deb [signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" > /etc/apt/sources.list.d/github-cli.list \
+    curl -fsSL -o /usr/share/keyrings/githubcli-archive-keyring.gpg https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+    && \
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" > /etc/apt/sources.list.d/github-cli.list \
     && \
     DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && \
