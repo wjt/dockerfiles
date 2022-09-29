@@ -54,7 +54,6 @@ RUN \
         python3-polib \
         python3-progressbar \
         sqlite3 \
-        transifex-client \
         whiptail \
         x11-utils \
     && \
@@ -68,5 +67,6 @@ RUN pip3 install BuildStream \
     pip3 install -e /opt/bst-external
 
 # Forgive me for I have sinned
-COPY install-deb-from-github-and-hope-for-the-best /usr/local/bin
-RUN install-deb-from-github-and-hope-for-the-best profclems/glab
+COPY install-deb-from-github-and-hope-for-the-best install-binary-from-github-and-hope-for-the-best /usr/local/bin
+RUN install-deb-from-github-and-hope-for-the-best profclems/glab && \
+    install-binary-from-github-and-hope-for-the-best transifex/cli
