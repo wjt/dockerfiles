@@ -5,11 +5,9 @@ COPY 50cacheopts /etc/apt/apt.conf.d
 
 # TODO: ADD <url> <file>
 ADD https://cli.github.com/packages/githubcli-archive-keyring.gpg /usr/share/keyrings/githubcli-archive-keyring.gpg
-COPY <<GITHUBCLI /etc/apt/sources.list.d/github-cli.list
-deb [signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main
-GITHUBCLI
-
 RUN \
+    echo "deb [signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" > /etc/apt/sources.list.d/github-cli.list \
+    && \
     DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && \
     DEBIAN_FRONTEND=noninteractive apt-get -y build-dep \
