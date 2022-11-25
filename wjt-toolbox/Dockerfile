@@ -1,4 +1,4 @@
-ARG BRANCH=latest
+ARG BRANCH=master
 FROM localhost/eos-admin:${BRANCH}
 
 COPY 50cacheopts /etc/apt/apt.conf.d

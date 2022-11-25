@@ -2,7 +2,7 @@
 args=$(getopt -o h -l "branch:,help" -n "$0" -- "$@")
 eval set -- "$args"
 
-BRANCH=latest
+BRANCH=master
 
 while true
 do
