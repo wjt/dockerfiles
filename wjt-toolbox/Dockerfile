@@ -27,6 +27,7 @@ RUN \
         flatpak \
         fonts-cantarell \
         fonts-lato \
+        git-absorb \
         git-revise \
         gir1.2-flatpak-1.0 \
         gir1.2-ostree-1.0 \
@@ -37,6 +38,7 @@ RUN \
         libgit2-dev \
         librsvg2-common \
         libxml2-utils \
+        gcovr \
         gh \
         multitime \
         ostree \
