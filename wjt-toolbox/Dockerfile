@@ -55,7 +55,9 @@ RUN \
         python3-pandas \
         python3-polib \
         python3-progressbar \
+        python3-psycopg2 \
         sqlite3 \
+        valgrind \
         whiptail \
         x11-utils \
     && \
