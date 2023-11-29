@@ -2,7 +2,7 @@
 args=$(getopt -o h -l "branch:,help" -n "$0" -- "$@")
 eval set -- "$args"
 
-BRANCH=master
+BRANCH=latest
 
 while true
 do
@@ -10,6 +10,7 @@ do
     --branch)
       shift
       BRANCH="$1"
+      ADMIN_BRANCH="$1"
       shift
       ;;
 
