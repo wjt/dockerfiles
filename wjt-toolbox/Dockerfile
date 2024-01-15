@@ -12,7 +12,9 @@ RUN \
     && \
     DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && \
-    DEBIAN_FRONTEND=noninteractive apt-get -y install \
+    DEBIAN_FRONTEND=noninteractive apt-get -y install  \
+        black \
+        clangd \
         git-absorb \
         git-revise \
         httpie \
@@ -20,8 +22,13 @@ RUN \
         gcovr \
         gh \
         multitime \
+        pandoc \
+        pigz \
         postgresql-client \
+        python3-boto \
         python3-progressbar \
+        python3-gi \
+        python3-phabricator \
         sqlite3 \
         valgrind \
         whiptail \
