@@ -1,4 +1,6 @@
 ARG BRANCH=latest
+
+# Build this from eos-administration/admin. Sorry, only accessible to Endless people. Nothing particularly exciting within.
 FROM localhost/eos-admin:${BRANCH}
 
 COPY 50cacheopts /etc/apt/apt.conf.d
