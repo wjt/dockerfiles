@@ -15,20 +15,20 @@ RUN \
     DEBIAN_FRONTEND=noninteractive apt-get -y install  \
         black \
         clangd \
+        gcovr \
+        gh \
         git-absorb \
         git-revise \
         httpie \
         ipython3 \
-        gcovr \
-        gh \
         multitime \
         pandoc \
         pigz \
         postgresql-client \
         python3-boto \
-        python3-progressbar \
         python3-gi \
         python3-phabricator \
+        python3-progressbar \
         sqlite3 \
         valgrind \
         whiptail \
