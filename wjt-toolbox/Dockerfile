@@ -31,6 +31,10 @@ RUN \
         python3-gi \
         python3-phabricator \
         python3-progressbar \
+        python3-pylsp-black \
+        python3-pylsp-isort \
+        python3-pylsp-mypy \
+        python3-pylsp-rope \
         sqlite3 \
         valgrind \
         whiptail \
