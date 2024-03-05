@@ -43,5 +43,4 @@ RUN \
 
 # Forgive me for I have sinned
 COPY install-deb-from-github-and-hope-for-the-best install-binary-from-github-and-hope-for-the-best /usr/local/bin
-RUN install-deb-from-github-and-hope-for-the-best profclems/glab && \
-    install-binary-from-github-and-hope-for-the-best transifex/cli
+RUN install-deb-from-github-and-hope-for-the-best profclems/glab
