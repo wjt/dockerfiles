@@ -1,7 +1,4 @@
-ARG BRANCH=latest
-
-# Build this from eos-administration/admin. Sorry, only accessible to Endless people. Nothing particularly exciting within.
-FROM localhost/eos-admin:${BRANCH}
+FROM docker.io/endlessm/eos-admin:latest
 
 COPY 50cacheopts /etc/apt/apt.conf.d
 
@@ -43,4 +40,8 @@ RUN \
 
 # Forgive me for I have sinned
 COPY install-deb-from-github-and-hope-for-the-best install-binary-from-github-and-hope-for-the-best /usr/local/bin
-RUN install-deb-from-github-and-hope-for-the-best profclems/glab
+RUN install-deb-from-github-and-hope-for-the-best profclems/glab && \
+    install-binary-from-github-and-hope-for-the-best martinvonz/jj ./jj
+
+RUN dpkg-divert --divert /usr/bin/pkexec.orig --rename /usr/bin/pkexec
+COPY pkexec /usr/bin

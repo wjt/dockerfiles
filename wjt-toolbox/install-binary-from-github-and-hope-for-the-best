@@ -6,8 +6,12 @@ import tempfile
 
 
 def find_tarball(assets):
+    suffices = (
+        "linux-amd64.tar.gz",
+        "x86_64-unknown-linux-musl.tar.gz",
+    )
     for asset in assets:
-        if asset["name"].endswith("linux-amd64.tar.gz"):
+        if any(asset["name"].endswith(s) for s in suffices):
             return asset["browser_download_url"]
 
     raise ValueError(", ".join(x["name"] for x in assets))
