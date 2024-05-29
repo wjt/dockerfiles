@@ -20,6 +20,8 @@ RUN \
         git-revise \
         httpie \
         ipython3 \
+        libglib2.0-dev \
+        libsecret-1-dev \
         multitime \
         pandoc \
         pigz \
@@ -45,3 +47,8 @@ RUN install-deb-from-github-and-hope-for-the-best profclems/glab && \
 
 RUN dpkg-divert --divert /usr/bin/pkexec.orig --rename /usr/bin/pkexec
 COPY pkexec /usr/bin
+
+# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=878599
+RUN make -C /usr/share/doc/git/contrib/credential/libsecret && \
+    mv /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret /usr/local/bin && \
+    make -C /usr/share/doc/git/contrib/credential/libsecret clean
