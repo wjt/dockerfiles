@@ -15,7 +15,9 @@ RUN \
         black \
         clangd \
         gcovr \
+        genisoimage \
         gh \
+        gir1.2-gnomedesktop-4.0 \
         git-absorb \
         git-revise \
         httpie \
