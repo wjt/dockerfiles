@@ -42,10 +42,9 @@ RUN \
     && \
     apt-get -y clean
 
-# Forgive me for I have sinned
-COPY install-deb-from-github-and-hope-for-the-best install-binary-from-github-and-hope-for-the-best /usr/local/bin
-RUN install-deb-from-github-and-hope-for-the-best profclems/glab && \
-    install-binary-from-github-and-hope-for-the-best martinvonz/jj ./jj
+COPY install-from-forge /usr/local/bin
+RUN install-from-forge --format deb gitlab gitlab.com gitlab-org/cli && \
+    install-from-forge --format tar github martinvonz/jj ./jj
 
 RUN dpkg-divert --divert /usr/bin/pkexec.orig --rename /usr/bin/pkexec
 COPY pkexec /usr/bin
