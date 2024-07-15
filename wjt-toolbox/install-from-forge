@@ -24,7 +24,7 @@ FORMATS = {
         command=("dpkg", "-i"),
     ),
     "tar": Format(
-        suffixes=frozenset({".tar.gz"}),
+        suffixes=frozenset({"x86_64-unknown-linux-musl.tar.gz"}),
         command=("tar", "-C", "/usr/local/bin", "-xf"),
     ),
 }
