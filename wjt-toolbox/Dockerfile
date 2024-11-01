@@ -19,6 +19,7 @@ RUN \
         gh \
         gir1.2-gnomedesktop-4.0 \
         git-absorb \
+        git-evtag \
         git-revise \
         httpie \
         ipython3 \
