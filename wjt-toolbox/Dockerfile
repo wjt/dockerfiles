@@ -26,6 +26,7 @@ RUN \
         libglib2.0-dev \
         libsecret-1-dev \
         multitime \
+        muon-meson \
         pandoc \
         pigz \
         postgresql-client \
