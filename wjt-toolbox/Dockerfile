@@ -45,7 +45,8 @@ RUN \
 
 COPY install-from-forge /usr/local/bin
 RUN install-from-forge --format deb gitlab gitlab.com gitlab-org/cli && \
-    install-from-forge --format tar github martinvonz/jj ./jj
+    install-from-forge --format tar github martinvonz/jj ./jj && \
+    install-from-forge --format deb github gulbanana/gg
 
 RUN dpkg-divert --divert /usr/bin/pkexec.orig --rename /usr/bin/pkexec
 COPY pkexec /usr/bin
