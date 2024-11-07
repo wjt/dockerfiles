@@ -22,6 +22,7 @@ RUN \
         git-evtag \
         git-revise \
         httpie \
+        hyperfine \
         ipython3 \
         libglib2.0-dev \
         libsecret-1-dev \
