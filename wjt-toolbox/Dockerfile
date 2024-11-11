@@ -26,6 +26,7 @@ RUN \
         ipython3 \
         libglib2.0-dev \
         libsecret-1-dev \
+        libvte-2.91-common \
         multitime \
         muon-meson \
         pandoc \
