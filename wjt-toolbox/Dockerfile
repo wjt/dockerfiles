@@ -27,6 +27,7 @@ RUN \
         libglib2.0-dev \
         libsecret-1-dev \
         libvte-2.91-common \
+        mosh \
         multitime \
         muon-meson \
         pandoc \
